@@ -89,6 +89,7 @@ export default {
       :originalTitle="item.original_title"
       :lingua="item.original_language"
       :voto="item.vote_average"
+      :img= "item.backdrop_path"
     />
 </template>
 

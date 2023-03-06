@@ -15,7 +15,7 @@ export default {
     <h3>{{ title }}</h3>
     <p>{{ originalTitle }}</p>
     <p>{{ lingua }} </p>
-    <img src="https://countryflagsapi.com/png/br">
+    <img crossorigin="anonymous" :src="'https://countryflagsapi.com/png/' + lingua">
     <p>{{ voto }}</p>
     <img :src="'https://image.tmdb.org/t/p/w500' + img ">
   </div>
