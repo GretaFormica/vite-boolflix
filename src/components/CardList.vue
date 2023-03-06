@@ -1,21 +1,62 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import Search from "./Search.vue";
+import FilmCard from "./FilmCard.vue";
+import { store } from './store';
+import axios from "axios";
+
 
 export default {
   data() {
     return {
-      title: "Card"
-    }
-  }
+      store,
+      title: "Cardlist",
+      endpoint: "https://api.themoviedb.org/3/movie/550?api_key=409efcdb9caa94eda8ab94cbf9f11af3"
 
-  // components: {
-  //   MyComponent,
-  // },
+    }
+  },
+
+  components: {
+    Search,
+    FilmCard,
+  },
+
+  methods : {
+
+    GenerazioneFilm(url) {
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response)
+          store.characters = response;
+          console.log(store)
+        })
+    },
+
+
+    filteredFilm(term) {
+      this.GenerazioneFilm(`${this.endpoint}?name=${term}`);
+    },
+  },
+
+  created() {
+    this.GenerazioneFilm(this.endpoint);
+  },
 };
 </script>
 
 <template>
   <p>{{ title }}</p>
+
+  <Search @on-search="filteredFilm"/>
+
+
+  <FilmCard
+      v-for=" in "
+      :title="title"
+      :originTitle="title2"
+      :lingua="lingua"
+      :voto="voto"
+    />
 </template>
 
 <style lang="scss" scoped></style>
