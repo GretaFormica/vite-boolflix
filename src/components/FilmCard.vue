@@ -5,6 +5,7 @@ export default {
     originalTitle: String,
     lingua: String,
     voto: String,
+    img: String,
   },
 };
 </script>
@@ -14,7 +15,9 @@ export default {
     <h3>{{ title }}</h3>
     <p>{{ originalTitle }}</p>
     <p>{{ lingua }} </p>
+    <img src="https://countryflagsapi.com/png/br">
     <p>{{ voto }}</p>
+    <img :src="'https://image.tmdb.org/t/p/w500' + img ">
   </div>
 </template>
 

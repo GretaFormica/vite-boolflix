@@ -13,9 +13,6 @@ export default {
       endpointmovie: "https://api.themoviedb.org/3/search/movie?api_key=409efcdb9caa94eda8ab94cbf9f11af3",
       endpointtv: "https://api.themoviedb.org/3/search/tv?api_key=409efcdb9caa94eda8ab94cbf9f11af3",
 
-      
-      
-
     }
   },
 
@@ -81,6 +78,7 @@ export default {
       :originalTitle="item.original_title"
       :lingua="item.original_language"
       :voto="item.vote_average"
+      :img= "item.backdrop_path"
     />
 
     <!-- serie -->
@@ -95,3 +93,4 @@ export default {
 </template>
 
 <style lang="scss" scoped></style>
+https://image.tmdb.org/t/p/w500
