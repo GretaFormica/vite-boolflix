@@ -10,7 +10,11 @@ export default {
     return {
       store,
       title: "Cardlist",
-      endpoint: "https://api.themoviedb.org/3/search/movie?api_key=409efcdb9caa94eda8ab94cbf9f11af3"
+      endpointmovie: "https://api.themoviedb.org/3/search/movie?api_key=409efcdb9caa94eda8ab94cbf9f11af3",
+      endpointtv: "https://api.themoviedb.org/3/search/tv?api_key=409efcdb9caa94eda8ab94cbf9f11af3",
+
+      
+      
 
     }
   },
@@ -22,6 +26,7 @@ export default {
 
   methods : {
 
+    //film
     GenerazioneFilm(url) {
       axios
         .get(url)
@@ -33,13 +38,31 @@ export default {
     },
 
 
-    filteredFilm(term) {
-      this.GenerazioneFilm(`${this.endpoint}&query=${term}`);
+    filtered(term) {
+      this.GenerazioneFilm(`${this.endpointmovie}&query=${term}`);
+      this.GenerazioneSerie(`${this.endpointtv}&query=${term}`);
+    },
+
+    // serietv
+    GenerazioneSerie(url) {
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response)
+          store.serie = response.data.results;
+          console.log(store)
+        })
     },
   },
 
   created() {
-    this.GenerazioneFilm(this.endpoint);
+
+    //film
+    this.GenerazioneFilm(this.endpointmovie);
+
+    //serietv
+    this.GenerazioneSerie(this.endpointtv);
+
   },
 };
 </script>
@@ -47,12 +70,24 @@ export default {
 <template>
   <p>{{ title }}</p>
 
-  <Search @on-search="filteredFilm"/>
+  <Search @on-search="filtered"/>
 
 
+  <!-- film -->
+  <h1 class="text-danger">FILM</h1>
   <FilmCard
       v-for=" item in store.film"
       :title="item.title"
+      :originalTitle="item.original_title"
+      :lingua="item.original_language"
+      :voto="item.vote_average"
+    />
+
+    <!-- serie -->
+    <h1 class="text-danger">SERIE TV</h1>
+  <FilmCard
+      v-for=" item in store.serie"
+      :title="item.original_name"
       :originalTitle="item.original_title"
       :lingua="item.original_language"
       :voto="item.vote_average"

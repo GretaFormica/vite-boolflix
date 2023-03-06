@@ -13,7 +13,7 @@ export default {
   <div>
     <h3>{{ title }}</h3>
     <p>{{ originalTitle }}</p>
-    <p>{{ lingua }}</p>
+    <p>{{ lingua }} </p>
     <p>{{ voto }}</p>
   </div>
 </template>
