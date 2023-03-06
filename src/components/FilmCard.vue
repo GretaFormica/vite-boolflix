@@ -2,7 +2,7 @@
 export default {
   props: {
     title: String,
-    originTitle: String,
+    originalTitle: String,
     lingua: String,
     voto: String,
   },
@@ -10,14 +10,18 @@ export default {
 </script>
 
 <template>
-  <div class="col text-center">
-    <h3 class="my-3">{{ title }}</h3>
-    <p class="my-1">{{ originTitle }}</p>
-    <p class="my-1">{{ lingua }}</p>
-    <p class="my-1">{{ voto }}</p>
+  <div>
+    <h3>{{ title }}</h3>
+    <p>{{ originalTitle }}</p>
+    <p>{{ lingua }}</p>
+    <p>{{ voto }}</p>
   </div>
 </template>
 
 <style lang="scss" scoped>
+
+template{
+    color: white;
+}
 
 </style>

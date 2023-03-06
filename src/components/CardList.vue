@@ -10,7 +10,7 @@ export default {
     return {
       store,
       title: "Cardlist",
-      endpoint: "https://api.themoviedb.org/3/movie/550?api_key=409efcdb9caa94eda8ab94cbf9f11af3"
+      endpoint: "https://api.themoviedb.org/3/search/movie?api_key=409efcdb9caa94eda8ab94cbf9f11af3"
 
     }
   },
@@ -27,14 +27,14 @@ export default {
         .get(url)
         .then((response) => {
           console.log(response)
-          store.characters = response;
+          store.film = response.data.results;
           console.log(store)
         })
     },
 
 
     filteredFilm(term) {
-      this.GenerazioneFilm(`${this.endpoint}?name=${term}`);
+      this.GenerazioneFilm(`${this.endpoint}&query=${term}`);
     },
   },
 
@@ -51,11 +51,11 @@ export default {
 
 
   <FilmCard
-      v-for=" in "
-      :title="title"
-      :originTitle="title2"
-      :lingua="lingua"
-      :voto="voto"
+      v-for=" item in store.film"
+      :title="item.title"
+      :originalTitle="item.original_title"
+      :lingua="item.original_language"
+      :voto="item.vote_average"
     />
 </template>
 
