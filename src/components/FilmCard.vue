@@ -11,20 +11,50 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h3>{{ title }}</h3>
-    <p>{{ originalTitle }}</p>
-    <p>{{ lingua }} </p>
-    <img crossorigin="anonymous" :src="'https://countryflagsapi.com/png/' + lingua">
-    <p>{{ voto }}</p>
-    <img :src="'https://image.tmdb.org/t/p/w500' + img ">
+  <div class="carta">
+        <img :src="'https://image.tmdb.org/t/p/w342' + img " class="poster">
+        <div class="text">
+            <h3> <b> Titolo: </b> {{ title }}</h3>
+            <p> <b> Titolo otiginale: </b> {{ originalTitle }}</p>
+            <img crossorigin="anonymous" :src="'https://countryflagsapi.com/png/' + lingua" class="bandiera">
+            <p class="my-3"> <b> Voto: </b> {{ voto }}</p>
+        </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 
-template{
-    color: white;
+.poster{
+    height: 500px;
+    width: 300px;
+    object-fit: contain;
+}
+
+.text{
+    display: none;
+    *{
+        display: none;
+    }
+}
+
+.carta:hover{
+
+    .poster{
+        display: none;
+    }
+
+    .text{
+        display: block;
+        padding: 50spx;
+
+        *{
+            display: block;
+        }
+    }
+}
+
+.bandiera{
+    width: 30px;
 }
 
 </style>

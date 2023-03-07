@@ -26,8 +26,10 @@ export default {
 </script>
 
 <template>
-  <Header />
-  <Main />
+  <div class="container">
+    <Header />
+    <Main />
+  </div>
   
 </template>
 

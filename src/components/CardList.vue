@@ -65,32 +65,36 @@ export default {
 </script>
 
 <template>
-  <p>{{ title }}</p>
 
   <Search @on-search="filtered"/>
 
 
   <!-- film -->
   <h1 class="text-danger">FILM</h1>
-  <FilmCard
-      v-for=" item in store.film"
-      :title="item.title"
-      :originalTitle="item.original_title"
-      :lingua="item.original_language"
-      :voto="item.vote_average"
-      :img= "item.backdrop_path"
+  <div class="row row-cols-3">
+
+    <FilmCard
+    v-for=" item in store.film"
+    :title="item.title"
+    :originalTitle="item.original_title"
+    :lingua="item.original_language"
+    :voto="item.vote_average"
+    :img= "item.poster_path"
     />
+  </div>
 
     <!-- serie -->
     <h1 class="text-danger">SERIE TV</h1>
-  <FilmCard
+    <div class="row row-cols-3">
+      <FilmCard
       v-for=" item in store.serie"
       :title="item.original_name"
       :originalTitle="item.original_title"
       :lingua="item.original_language"
       :voto="item.vote_average"
-      :img= "item.backdrop_path"
-    />
+      :img= "item.poster_path"
+      />
+    </div>
 </template>
 
 <style lang="scss" scoped></style>
